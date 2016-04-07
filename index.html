@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>BostonJS Speaker Team Lottery</title>
+
+    <style>
+      html {
+        font-family: Helvetica, Arial;
+        background: #eee;
+      }
+      body {
+        max-width: 800px;
+        margin: 20px auto;
+        border: 1px solid #ddd;
+        padding: 20px;
+        background: #fff;
+      }
+
+      h1 {
+        text-align: center;
+      }
+      h1 + p {
+        text-align: center;
+      }
+
+      #lottery {
+        text-align: center;
+        font-size: 80px;
+        font-weight: bold;
+      }
+      #lottery button {
+        font: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>BostonJS Speaker Team Lottery</h1>
+
+    <p>Next up is: </p>
+
+    <p id="lottery"><button>Lottery!</button></p>
+
+    <h2>Past Teams</h2>
+
+    <ol>
+      <li>Team A: <a href="http://www.meetup.com/boston_JS/events/228985404/">April 7, 2016</a></li>
+    </ol>
+
+    <script>
+      var letters = 'BCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+
+      function lottery () {
+        for (var i = 1; i <= 30; i++) {
+          setTimeout(showRandomLetter, i * i * 10)
+        }
+      }
+
+      var nr = 0;
+      function showRandomLetter () {
+        var randomPosition = Math.floor(Math.random() * letters.length)
+        document.querySelector('#lottery').textContent = 'Team ' + letters[randomPosition]
+        console.log(++nr)
+      }
+
+      document.querySelector('#lottery button').addEventListener('click', lottery)
+    </script>
+  </body>
+</html>
